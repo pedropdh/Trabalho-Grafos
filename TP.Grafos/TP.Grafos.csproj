@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="algoritmos\ExercicioII.cs" />
+    <Compile Include="algoritmos\ExercicioIII.cs" />
+    <Compile Include="algoritmos\ExercicioIV.cs" />
+    <Compile Include="principais\GrafoLogistico.cs" />
     <Compile Include="principais\G_Lista.cs" />
     <Compile Include="principais\LeitorDIMACS.cs" />
     <Compile Include="principais\G_Matriz.cs" />
@@ -63,8 +67,6 @@
     <None Include="grafos\grafo06.dimacs" />
     <None Include="grafos\grafo07.dimacs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="algoritmos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

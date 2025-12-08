@@ -14,10 +14,10 @@ namespace TP.Grafos
         public double Custo { get; }
         public double Capacidade { get; set; }
 
-        public Aresta(int origem, int _destino, double custo, double capacidade)
+        public Aresta(int origem, int destino, double custo, double capacidade)
         {
             _origem = origem;
-            _destino = _destino;
+            _destino = destino;
             Custo = custo;
             Capacidade = capacidade;
         }
