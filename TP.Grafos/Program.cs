@@ -30,8 +30,8 @@ namespace TP.Grafos
             IGrafos grafo = LeitorDIMACS.Carregar($"grafos/grafo0{opcao1}.dimacs");
 
             Console.WriteLine("Grafo montado!");
-            Console.WriteLine($"Vértices: {grafo.QuantVertices}");
-            Console.WriteLine($"Arestas: {grafo.QuantArestas}");
+            Console.WriteLine($"Vértices: {grafo._quantVertices}");
+            Console.WriteLine($"Arestas: {grafo._quantArestas}");
 
             Console.WriteLine("1) Qual é o trajeto mais econômico para enviar cargas entre dois centros? (Roteamento de Menor Custo)\n" +
                 "2) Qual é o limite diário de escoamento de mercadorias da empresa? (Capacidade Máxima de Escoamento)" +
