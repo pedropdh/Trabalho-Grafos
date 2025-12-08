@@ -20,11 +20,11 @@ namespace TP.Grafos
         static void Main(string[] args)
         {
             Console.WriteLine("Grafo 1\n" +
-                "Grafo 2" +
-                "Grafo 3" +
-                "Grafo 4" +
-                "Grafo 5" +
-                "Grafo 6" +
+                "Grafo 2\n" +
+                "Grafo 3\n" +
+                "Grafo 4\n" +
+                "Grafo 5\n" +
+                "Grafo 6\n" +
                 "Grafo 7");
             char opcao1 = char.Parse(Console.ReadLine());
             IGrafos grafo = LeitorDIMACS.Carregar($"grafos/grafo0{opcao1}.dimacs");
@@ -34,10 +34,10 @@ namespace TP.Grafos
             Console.WriteLine($"Arestas: {grafo._quantArestas}");
 
             Console.WriteLine("1) Qual é o trajeto mais econômico para enviar cargas entre dois centros? (Roteamento de Menor Custo)\n" +
-                "2) Qual é o limite diário de escoamento de mercadorias da empresa? (Capacidade Máxima de Escoamento)" +
-                "3) Como interligar todos os centros de distribuição ao menor custo? (Expansão da Rede de Comunicação)" +
-                "4) Como planejar manutenções sem conflitos de recurso? (Agendamento de Manutenções sem Conflito)" +
-                "5) É possível criar um percurso único de inspeção pelas rotas e centros? (Rota Única de Inspeção)");
+                "2) Qual é o limite diário de escoamento de mercadorias da empresa? (Capacidade Máxima de Escoamento)\n" +
+                "3) Como interligar todos os centros de distribuição ao menor custo? (Expansão da Rede de Comunicação)\n" +
+                "4) Como planejar manutenções sem conflitos de recurso? (Agendamento de Manutenções sem Conflito)\n" +
+                "5) É possível criar um percurso único de inspeção pelas rotas e centros? (Rota Única de Inspeção)\n");
             char opcao = char.Parse(Console.ReadLine());
             switch (opcao)
             {
