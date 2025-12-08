@@ -46,10 +46,10 @@ namespace TP.Grafos
                 case '2':
                     break;
                 case '3':
-                    AGM.CalcularAGM(grafo);
+                    AGM.ExibirResultados(AGM.CalcularAGM(grafo));
                     break;
                 case '4':
-                    AgendamentoManutencao.CalcularAgendamento(grafo);
+                    AgendamentoManutencao.ExibirResultados(AgendamentoManutencao.CalcularAgendamento(grafo));
                     break;
                 case '5':
                     break;
