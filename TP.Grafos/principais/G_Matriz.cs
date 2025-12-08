@@ -10,13 +10,13 @@ namespace TP.Grafos
     {
         private double[,] custos;
         private double[,] capacidades;
-        public int QuantVertices { get; }
-        public int QuantArestas { get; private set; }
+        public int _quantVertices { get; }
+        public int _quantArestas { get; private set; }
 
 
         public G_Matriz(int totalVertices)
         {
-            QuantVertices = totalVertices;
+            _quantVertices = totalVertices;
             custos = new double[totalVertices + 1, totalVertices + 1];
             capacidades = new double[totalVertices + 1, totalVertices + 1];
 
@@ -29,15 +29,15 @@ namespace TP.Grafos
         /// <summary>
         /// Adiciona uma aresta entre os vértices informados
         /// </summary>
-        /// <param name="origem"></param>
-        /// <param name="destino"></param>
+        /// <param name="_origem"></param>
+        /// <param name="_destino"></param>
         /// <param name="custo"></param>
         /// <param name="capacidade"></param>
-        public void AdicionarAresta(int origem, int destino, double custo, double capacidade)
+        public void AdicionarAresta(int _origem, int _destino, double custo, double capacidade)
         {
-            custos[origem, destino] = custo;
-            capacidades[origem, destino] = capacidade;
-            QuantArestas++;
+            custos[_origem, _destino] = custo;
+            capacidades[_origem, _destino] = capacidade;
+            _quantArestas++;
         }
         /// <summary>
         /// Retora uma lista com as arestas adjacentes ao vértice informado
@@ -48,11 +48,11 @@ namespace TP.Grafos
         {
             var lista = new List<Aresta>();
 
-            for (int destino = 1; destino <= QuantVertices; destino++)
+            for (int _destino = 1; _destino <= _quantVertices; _destino++)
             {
-                if (custos[vert, destino] < double.PositiveInfinity)
+                if (custos[vert, _destino] < double.PositiveInfinity)
                 {
-                    lista.Add(new Aresta(vert, destino, custos[vert, destino], capacidades[vert, destino]));
+                    lista.Add(new Aresta(vert, _destino, custos[vert, _destino], capacidades[vert, _destino]));
                 }
             }
 
@@ -61,26 +61,26 @@ namespace TP.Grafos
         /// <summary>
         /// Verifica se existe uma aresta entre os vértices informados
         /// </summary>
-        /// <param name="origem"></param>
-        /// <param name="destino"></param>
+        /// <param name="_origem"></param>
+        /// <param name="_destino"></param>
         /// <returns>Retona falso se não tiver</returns>
-        public bool ExisteAresta(int origem, int destino)
-            => custos[origem, destino] < double.PositiveInfinity;
+        public bool ExisteAresta(int _origem, int _destino)
+            => custos[_origem, _destino] < double.PositiveInfinity;
         /// <summary>
         /// Retorna o custo da aresta entre os vértices informados
         /// </summary>
-        /// <param name="origem"></param>
-        /// <param name="destino"></param>
+        /// <param name="_origem"></param>
+        /// <param name="_destino"></param>
         /// <returns></returns>
-        public double ObterCusto(int origem, int destino)
-            => custos[origem, destino];
+        public double ObterCusto(int _origem, int _destino)
+            => custos[_origem, _destino];
         /// <summary>
         /// Obtem a capacidade da aresta entre os vértices informados
         /// </summary>
-        /// <param name="origem"></param>
-        /// <param name="destino"></param>
+        /// <param name="_origem"></param>
+        /// <param name="_destino"></param>
         /// <returns></returns>
-        public double ObterCapacidade(int origem, int destino)
-            => capacidades[origem, destino];
+        public double ObterCapacidade(int _origem, int _destino)
+            => capacidades[_origem, _destino];
     }
 }
