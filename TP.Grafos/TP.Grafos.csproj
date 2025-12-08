@@ -46,12 +46,14 @@
     <Compile Include="algoritmos\ExercicioII.cs" />
     <Compile Include="algoritmos\ExercicioIII.cs" />
     <Compile Include="algoritmos\ExercicioIV.cs" />
+    <Compile Include="principais\FormatadoresLog.cs" />
     <Compile Include="principais\GrafoLogistico.cs" />
     <Compile Include="principais\G_Lista.cs" />
     <Compile Include="principais\LeitorDIMACS.cs" />
     <Compile Include="principais\G_Matriz.cs" />
     <Compile Include="principais\Aresta.cs" />
     <Compile Include="principais\IGrafos.cs" />
+    <Compile Include="principais\ProcessadorLogistico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

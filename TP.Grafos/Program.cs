@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP.Grafos;
+using TP.Grafos.principais;
 
 namespace TP.Grafos
 {
@@ -21,19 +22,20 @@ namespace TP.Grafos
        ser transportado pela rota, levando em conta restrições de infraestrutura e tráfego*/
         static void Main(string[] args)
         {
-            int opcao = 0;
+            char opcao = '1';
             do
             {
 
-                Console.WriteLine("===- ESCOLHA UM DOS GRAFOS -===" +
+                Console.WriteLine("===- ESCOLHA UM DOS GRAFOS -=== \n" + 
                     "Grafo 1\n" +
                     "Grafo 2\n" +
                     "Grafo 3\n" +
                     "Grafo 4\n" +
                     "Grafo 5\n" +
                     "Grafo 6\n" +
-                    "Grafo 7");
+                    "Grafo 7"); 
                 char opcao1 = char.Parse(Console.ReadLine());
+                string nomeGrafo = $"grafo0{opcao1}";
                 IGrafos grafo = LeitorDIMACS.Carregar($"grafos/grafo0{opcao1}.dimacs");
 
                 Console.WriteLine("Grafo montado!");
@@ -46,7 +48,7 @@ namespace TP.Grafos
                     "3 - Como interligar todos os centros de distribuição ao menor custo? (Expansão da Rede de Comunicação)\n" +
                     "4 - Como planejar manutenções sem conflitos de recurso? (Agendamento de Manutenções sem Conflito)\n" +
                     "5 - É possível criar um percurso único de inspeção pelas rotas e centros? (Rota Única de Inspeção)\n");
-                opcao = int.Parse(Console.ReadLine());
+                opcao = char.Parse(Console.ReadLine());
                 switch (opcao)
                 {
                     case '1':
@@ -80,9 +82,16 @@ namespace TP.Grafos
                     case '5':
                         break;
                     default:
-                        Console.WriteLine("Muito Obrigado);
+                        Console.WriteLine("Muito Obrigado");
+                        break;
                 }
-            } while (opcao != 0);
+
+                ProcessadorLogistico.ProcessarTodasRespostasELog(grafo, nomeGrafo);
+                Console.WriteLine($"\n Processamento concluído. O log completo de todas as 5 respostas foi salvo em Log_{nomeGrafo}.txt");
+                Console.WriteLine("\nPressione Enter para sair.");
+                Console.ReadLine();
+
+            } while (opcao > 0 && opcao< 6);
         }
     }
 }
