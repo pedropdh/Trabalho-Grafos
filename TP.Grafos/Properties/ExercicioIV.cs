@@ -1,14 +1,32 @@
-
 using System;
 using System.Collections.Generic;
 
 namespace TP.Grafos
 {
+    /// <summary>
+    /// Representa o resultado do agendamento de manutenções para as rotas de uma rede.
+    /// Contém o número de turnos necessários e a distribuição das rotas por turno.
+    /// </summary>
     internal class ResultadoManutencao
     {
+        /// <summary>
+        /// Número mínimo de turnos necessários para realizar todas as manutenções
+        /// sem conflito de vértices (hubs) em um mesmo turno.
+        /// </summary>
         public int NumeroTurnos { get; }
+
+        /// <summary>
+        /// Dicionário que mapeia cada turno (índice baseado em 0) para a lista de rotas
+        /// que podem ser mantidas simultaneamente naquele turno.
+        /// </summary>
         public Dictionary<int, List<Aresta>> RotasPorTurno { get; }
 
+        /// <summary>
+        /// Inicializa uma nova instância da classe ResultadoManutencao.
+        /// </summary>
+        /// <param name="numeroTurnos">Número total de turnos necessários para o agendamento.</param>
+        /// <param name="rotasPorTurno">Distribuição das rotas por turno, onde a chave é o índice do turno.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Lançada quando o número de turnos é negativo.</exception>
         public ResultadoManutencao(int numeroTurnos, Dictionary<int, List<Aresta>> rotasPorTurno)
         {
             if (numeroTurnos < 0) throw new ArgumentOutOfRangeException(nameof(numeroTurnos));
@@ -17,8 +35,20 @@ namespace TP.Grafos
         }
     }
 
+    /// <summary>
+    /// Classe estática que fornece métodos para agendar manutenções de rotas em uma rede,
+    /// garantindo que nenhum hub seja mantido mais de uma vez por turno.
+    /// Implementa uma heurística de coloração de arestas baseada no grau dos vértices.
+    /// </summary>
     internal static class AgendamentoManutencao
     {
+        /// <summary>
+        /// Calcula um agendamento ótimo de manutenções para todas as rotas da rede,
+        /// minimizando o número de turnos necessários.
+        /// </summary>
+        /// <param name="grafo">Grafo representando a rede de hubs e rotas.</param>
+        /// <returns>Objeto ResultadoManutencao contendo o agendamento calculado.</returns>
+        /// <exception cref="ArgumentNullException">Lançada quando o grafo é nulo.</exception>
         internal static ResultadoManutencao CalcularAgendamento(IGrafos grafo)
         {
             if (grafo == null) throw new ArgumentNullException(nameof(grafo));
@@ -126,6 +156,12 @@ namespace TP.Grafos
             return new ResultadoManutencao(numeroTurnos, rotasPorTurno);
         }
 
+        /// <summary>
+        /// Extrai todas as arestas únicas de um grafo, eliminando duplicatas (para grafos não direcionados).
+        /// </summary>
+        /// <param name="grafo">Grafo do qual serão extraídas as arestas.</param>
+        /// <returns>Lista de arestas únicas do grafo.</returns>
+        /// <exception cref="ArgumentNullException">Lançada quando o grafo é nulo.</exception>
         private static List<Aresta> ExtrairTodasArestas(IGrafos grafo)
         {
             if (grafo == null) throw new ArgumentNullException(nameof(grafo));
@@ -166,6 +202,11 @@ namespace TP.Grafos
             return arestas;
         }
 
+        /// <summary>
+        /// Exibe os resultados do agendamento de manutenções de forma formatada no console.
+        /// </summary>
+        /// <param name="resultado">Objeto ResultadoManutencao contendo os dados do agendamento.</param>
+        /// <exception cref="ArgumentNullException">Lançada quando o resultado é nulo.</exception>
         public static void ExibirResultados(ResultadoManutencao resultado)
         {
             if (resultado == null) throw new ArgumentNullException(nameof(resultado));
@@ -191,6 +232,16 @@ namespace TP.Grafos
             }
         }
 
+        /// <summary>
+        /// Verifica se um agendamento de manutenções é válido, garantindo que nenhum hub
+        /// apareça mais de uma vez em um mesmo turno.
+        /// </summary>
+        /// <param name="resultado">Objeto ResultadoManutencao a ser validado.</param>
+        /// <returns>
+        /// True se o agendamento é válido (nenhum hub repete em um mesmo turno),
+        /// False caso contrário.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Lançada quando o resultado é nulo.</exception>
         public static bool VerificarAgendamentoValido(ResultadoManutencao resultado)
         {
             if (resultado == null) throw new ArgumentNullException(nameof(resultado));
