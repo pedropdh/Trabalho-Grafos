@@ -162,8 +162,8 @@ namespace TP.Grafos
 
             foreach (Aresta aresta in resultado.Arestas)
             {
-                char hubOrigem = (char)('A' + (aresta._origem - 1)); 
-                char hubDestino = (char)('A' + (aresta._destino - 1));
+                int hubOrigem = (aresta._origem); 
+                int hubDestino = (aresta._destino);
                 Console.WriteLine($"  Hub {hubOrigem} -> Hub {hubDestino} : R$ {aresta.Custo:F2}");
             }
             Console.WriteLine();
