@@ -223,8 +223,8 @@ namespace TP.Grafos
                 for (int j = 0; j < rotas.Count; j++)
                 {
                     Aresta rota = rotas[j];
-                    char hubOrigem = (char)('A' + rota._origem - 1);
-                    char hubDestino = (char)('A' + rota._destino - 1);
+                    int hubOrigem = (aresta._origem); 
+                    int hubDestino = (aresta._destino);
                     Console.WriteLine(string.Format("  - Hub {0} -> Hub {1} (Custo: R$ {2:F2}, Capacidade: {3}t)",
                         hubOrigem, hubDestino, rota.Custo, rota.Capacidade));
                 }
