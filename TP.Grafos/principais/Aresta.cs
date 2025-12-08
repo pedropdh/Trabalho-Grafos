@@ -9,15 +9,15 @@ namespace TP.Grafos
     internal class Aresta
     {
         
-        public int Origem { get; }
-        public int Destino { get; }
+        public int _origem { get; }
+        public int _destino { get; }
         public double Custo { get; }
         public double Capacidade { get; set; }
 
-        public Aresta(int origem, int destino, double custo, double capacidade)
+        public Aresta(int origem, int _destino, double custo, double capacidade)
         {
-            Origem = origem;
-            Destino = destino;
+            _origem = origem;
+            _destino = _destino;
             Custo = custo;
             Capacidade = capacidade;
         }

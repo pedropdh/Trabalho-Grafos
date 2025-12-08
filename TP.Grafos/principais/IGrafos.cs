@@ -8,15 +8,15 @@ namespace TP.Grafos
 {
     internal interface IGrafos
     {
-        int QuantVertices { get; }
-        int QuantArestas { get; }
-        void AdicionarAresta(int origem, int destino, double custo, double capacidade);
+        int _quantVertices { get; }
+        int _quantArestas { get; }
+        void AdicionarAresta(int _origem, int _destino, double custo, double capacidade);
 
         List<Aresta> ObterAdjacentes(int v);
 
-        bool ExisteAresta(int origem, int destino);
+        bool ExisteAresta(int _origem, int _destino);
 
-        double ObterCusto(int origem, int destino);
-        double ObterCapacidade(int origem, int destino);
+        double ObterCusto(int _origem, int _destino);
+        double ObterCapacidade(int _origem, int _destino);
     }
 }

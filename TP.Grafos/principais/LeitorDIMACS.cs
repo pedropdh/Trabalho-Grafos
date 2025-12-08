@@ -36,12 +36,12 @@ namespace TP.Grafos
             {
                 var partes = linhas[i].Split();
 
-                int origem = int.Parse(partes[0]);
-                int destino = int.Parse(partes[1]);
+                int _origem = int.Parse(partes[0]);
+                int _destino = int.Parse(partes[1]);
                 double custo = double.Parse(partes[2]);
                 double capacidade = double.Parse(partes[3]);
 
-                grafo.AdicionarAresta(origem, destino, custo, capacidade);
+                grafo.AdicionarAresta(_origem, _destino, custo, capacidade);
             }
 
             return grafo;
