@@ -11,9 +11,9 @@ namespace TP.Grafos
     {
         public static IGrafos Carregar(string caminhoArquivo)
         {
-            var linhas = File.ReadAllLines(caminhoArquivo);
+            string[] linhas = File.ReadAllLines(caminhoArquivo);
 
-            var cabecalho = linhas[0].Split();
+            string[] cabecalho = linhas[0].Split();
             int vertices = int.Parse(cabecalho[0]);
             int arestas = int.Parse(cabecalho[1]);
 
@@ -34,7 +34,7 @@ namespace TP.Grafos
 
             for (int i = 1; i < linhas.Length; i++)
             {
-                var partes = linhas[i].Split();
+                string[] partes = linhas[i].Split();
 
                 int _origem = int.Parse(partes[0]);
                 int _destino = int.Parse(partes[1]);
